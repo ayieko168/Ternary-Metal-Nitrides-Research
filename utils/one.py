@@ -1,5 +1,7 @@
 import os, sys
+from numpy import mat
 from pymatgen.ext.matproj import MPRester
+import json
 
 API_TOKEN = os.environ.get("MPTOKEN")
 
@@ -19,3 +21,7 @@ materials = mpr.query(criteria=crt, properties=prt)
 for i in materials: print(i)
 
 print(f"Number of materials : {len(materials)}")
+
+## Save the data to file
+with open('TMR_Data.json', 'w') as fo:
+    json.dump({'Total materials': len(materials), "Materials": materials}, fo, indent=2)
