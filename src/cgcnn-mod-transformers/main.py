@@ -14,9 +14,9 @@ from sklearn import metrics
 from torch.autograd import Variable
 from torch.optim.lr_scheduler import MultiStepLR
 
-from cgcnn.data import CIFData
-from cgcnn.data import collate_pool, get_train_val_test_loader
-from cgcnn.model import CrystalGraphConvNet
+from data import CIFData
+from data import collate_pool, get_train_val_test_loader
+from model import CrystalGraphConvNet
 
 parser = argparse.ArgumentParser(description='Crystal Graph Convolutional Neural Networks')
 parser.add_argument('data_options', metavar='OPTIONS', nargs='+',
@@ -406,7 +406,7 @@ def validate(val_loader, model, criterion, normalizer, test=False):
     if test:
         star_label = '**'
         import csv
-        with open('test_results.csv', 'w') as f:
+        with open('test_results.csv', 'w' newline='') as f:
             writer = csv.writer(f)
             for cif_id, target, pred in zip(test_cif_ids, test_targets,
                                             test_preds):

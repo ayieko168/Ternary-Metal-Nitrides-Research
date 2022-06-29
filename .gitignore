@@ -114,3 +114,5 @@ dmypy.json
 .pyre/
 
 /src/cgcnn-mod-transformers/data
+*.cif
+candidates.json
