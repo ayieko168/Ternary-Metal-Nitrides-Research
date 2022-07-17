@@ -204,10 +204,9 @@ def validate(val_loader, model, criterion, normalizer, test=False):
     if test:
         star_label = '**'
         import csv
-        headerList = ['material', 'test', 'result']
         with open('predict_results.csv', 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(headerList)
+            writer.writerow(('material', 'test', 'result')) ## Header
             for cif_id, target, pred in zip(test_cif_ids, test_targets, test_preds):
                 writer.writerow((cif_id, target, pred))
     else:
